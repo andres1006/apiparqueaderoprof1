@@ -1,4 +1,5 @@
 // Example model
+'use strict'
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
@@ -18,4 +19,5 @@ const VentaSchema = new Schema({
 
 
 
-mongoose.model('Venta', VentaSchema);
+module.exports = mongoose.model('Venta', VentaSchema);
+//mongoose.model('Venta', VentaSchema);

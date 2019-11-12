@@ -1,13 +1,13 @@
 const AccesorioService = require('../../services/accesorioService');
 
 module.exports = {
-    async getTipoAnimals(req, res, next) {
-        const accesorio = await AccesorioService.getAllAccesorioServices();
+    async getAccesorios(req, res, next) {
+        const accesorios = await AccesorioService.getAllAccesorioServices();
 
-        return res.status(200).send({ accesorio });
+        return res.status(200).send({ accesorios });
     },
 
-    async getTipoAnimal(req, res, next) {
+    async getAccesorio(req, res, next) {
         const { id } = req.params;
 
         const accesorio = await AccesorioService.getAccesorioServiceById(id);

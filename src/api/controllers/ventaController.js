@@ -1,17 +1,17 @@
-const AccesorioService = require('../../services/accesorioService');
+const VentaService = require('../../services/ventaService');
 
 module.exports = {
-    async getTipoAnimals(req, res, next) {
-        const accesorio = await AccesorioService.getAllAccesorioServices();
+    async getVentas(req, res, next) {
+        const ventas = await VentaService.getAllVentaServices();
 
-        return res.status(200).send({ accesorio });
+        return res.status(200).send({ ventas });
     },
 
-    async getTipoAnimal(req, res, next) {
+    async getVenta(req, res, next) {
         const { id } = req.params;
 
-        const accesorio = await AccesorioService.getAccesorioServiceById(id);
+        const venta = await VentaService.getVentaServiceById(id);
 
-        return res.status(200).send({ accesorio });
+        return res.status(200).send({ venta });
     },
 };

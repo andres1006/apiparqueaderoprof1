@@ -1,17 +1,17 @@
-const AccesorioService = require('../../services/accesorioService');
+const PlanillaService = require('../../services/planillaService');
 
 module.exports = {
-    async getTipoAnimals(req, res, next) {
-        const accesorio = await AccesorioService.getAllAccesorioServices();
+    async getPlanillas(req, res, next) {
+        const planillas = await PlanillaService.getAllPlanillaServices();
 
-        return res.status(200).send({ accesorio });
+        return res.status(200).send({ planillas });
     },
 
-    async getTipoAnimal(req, res, next) {
+    async getPlanilla(req, res, next) {
         const { id } = req.params;
 
-        const accesorio = await AccesorioService.getAccesorioServiceById(id);
+        const planilla = await PlanillaService.getPlanillaServiceById(id);
 
-        return res.status(200).send({ accesorio });
+        return res.status(200).send({ planilla });
     },
 };

@@ -1,5 +1,7 @@
 // Example model
 
+'use strict'
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -12,4 +14,5 @@ const AccesorioSchema = new Schema({
 });
 
 
-mongoose.model('Accesorio', AccesorioSchema);
+module.exports = mongoose.model('Accesorio', AccesorioSchema);
+//mongoose.model('Accesorio', AccesorioSchema);

@@ -1,17 +1,17 @@
-const AccesorioService = require('../../services/accesorioService');
+const MotoService = require('../../services/motoService');
 
 module.exports = {
-    async getTipoAnimals(req, res, next) {
-        const accesorio = await AccesorioService.getAllAccesorioServices();
+    async getMotos(req, res, next) {
+        const motos = await MotoService.getAllMotoServices();
 
-        return res.status(200).send({ accesorio });
+        return res.status(200).send({ motos });
     },
 
-    async getTipoAnimal(req, res, next) {
+    async getMoto(req, res, next) {
         const { id } = req.params;
 
-        const accesorio = await AccesorioService.getAccesorioServiceById(id);
+        const moto = await MotoService.getMotoServiceById(id);
 
-        return res.status(200).send({ accesorio });
+        return res.status(200).send({ moto });
     },
 };

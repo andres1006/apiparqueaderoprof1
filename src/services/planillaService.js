@@ -1,4 +1,5 @@
 'use strict'
+
 const mongoose = require('mongoose');
 const Planilla = require('../api/model/planilla')
 

@@ -1,4 +1,5 @@
 // Example model
+'use strict'
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
@@ -10,4 +11,6 @@ const SuscripcionSchema = new Schema({
     estado: Boolean
 });
 
-mongoose.model('Suscripcion', SuscripcionSchema);
+
+module.exports = mongoose.model('Suscripcion', SuscripcionSchema);
+//mongoose.model('Suscripcion', SuscripcionSchema);

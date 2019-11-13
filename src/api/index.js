@@ -6,30 +6,48 @@ const logger = require('../config/logger');
 
 const router = Router();
 
+const clientesRouter = require('./routes/clienteRoutes');
+const modalidadesRouter = require('./routes/modalidadRouters');
+const objetosRouter = require('./routes/objetoRouters');
+const plazosRouter = require('./routes/plazoRouters');
+const registrosRouter = require('./routes/registroRouters');
+const usuariosRouter = require('./routes/usuarioRouters');
+//const vehiculosRouter = require('./routes/vehiculoRouters');
+
+
+
 /**
  * Router configuration
  */
 router.use(
-  morgan(':status - [:method :url - :remote-addr] :response-time ms', {
-    stream: {
-      write: message => logger.info(message),
-    },
-    skip: (req, res) => res.statusCode >= 400,
-  })
+    morgan(':status - [:method :url - :remote-addr] :response-time ms', {
+        stream: {
+            write: message => logger.info(message),
+        },
+        skip: (req, res) => res.statusCode >= 400,
+    })
 );
 
 /**
  * API routes
  */
 router.get('/', (req, res) => res.sendStatus(200));
+router.use('/clientes', clientesRouter);
+router.use('/modalidades', modalidadesRouter);
+router.use('/objetos', objetosRouter);
+router.use('/plazos', plazosRouter);
+router.use('/registros', registrosRouter);
+router.use('/usuarios', usuariosRouter);
+//router.use('/vehiculos', vehiculosRouter);
+
 
 /**
  * 404 error handling
  */
 router.use((req, res, next) => {
-  const { baseUrl, url, method } = req;
+    const { baseUrl, url, method } = req;
 
-  next(new NotFound(`The route '${method} ${baseUrl}${url}' doesn't exist.`));
+    next(new NotFound(`The route '${method} ${baseUrl}${url}' doesn't exist.`));
 });
 
 module.exports = router;

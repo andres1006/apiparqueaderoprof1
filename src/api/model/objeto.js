@@ -5,7 +5,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const Registro = require('./registro')
 
 
 const ObjetoSchema = new Schema({

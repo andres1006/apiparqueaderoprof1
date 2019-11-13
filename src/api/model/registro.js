@@ -3,10 +3,9 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Vehiculo = require('./vehiculo')
-const Moto = require('./moto')
-const Usuario = require('./usuario')
-const Objeto = require('./objeto')
+const Vehiculo = require('./vehiculo');
+const Usuario = require('./usuario');
+const Objeto = require('./objeto');
 
 
 const RegistroSchema = new Schema({
@@ -26,4 +25,4 @@ const RegistroSchema = new Schema({
 
 
 module.exports = mongoose.model('Registro', RegistroSchema);
-//mongoose.model('Planilla', PlanillaSchema);
+//mongoose.model('Registro', RegistroSchema);

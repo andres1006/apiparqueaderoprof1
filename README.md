@@ -1,6 +1,6 @@
 # parqueadero porfundización 1 <!-- omit in toc -->
 
-> Api para parqueadero para motos
+> Api para parqueadero para Vehiculos
 
 - [Getting started](#getting-started)
   - [Prerequisites](#prerequisites)

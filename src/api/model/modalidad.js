@@ -18,4 +18,4 @@ const ModalidadSchema = new Schema({
 
 
 module.exports = mongoose.model('Modalidad', ModalidadSchema);
-//mongoose.model('Suscripcion', SuscripcionSchema);
+//mongoose.model('Modalidad', ModalidadSchema);

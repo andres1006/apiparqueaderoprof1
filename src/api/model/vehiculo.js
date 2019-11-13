@@ -17,4 +17,4 @@ const VehiculoSchema = new Schema({
 });
 
 module.exports = mongoose.model('Vehiculo', VehiculoSchema);
-//mongoose.model('Moto', MotoSchema);
+//mongoose.model('Vehiculo', VehiculoSchema);

@@ -2,7 +2,7 @@ const UsuarioService = require('../../services/usuarioService');
 
 module.exports = {
     async getUsuarios(req, res, next) {
-        const usuarios = await AccesorioService.getAllUsuarioServices();
+        const usuarios = await ObjetoService.getAllUsuarioServices();
 
         return res.status(200).send({ usuarios });
     },

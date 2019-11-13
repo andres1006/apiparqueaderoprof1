@@ -6,10 +6,10 @@ const Schema = mongoose.Schema;
 
 const ProductoSchema = new Schema({
     //atributos
+    id: String,
+    tiempo: String,
     descripcion: String,
-    stock: Number,
-    precio: Number,
-    estado: Boolean
+    valor: Number
 });
 
 

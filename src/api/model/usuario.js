@@ -7,6 +7,7 @@ const crypto = require('crypto')
 
 const UsuarioSchema = new Schema({
     email: { type: String, unique: true, lowercase: true },
+    tipoUsuario: String,
     displayName: String,
     password: { type: String, select: false },
     signupDate: { type: Date, default: Date.now() },

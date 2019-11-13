@@ -1,19 +1,19 @@
 'use strict'
 
 const mongoose = require('mongoose');
-const Accesorio = require('../api/model/accesorio')
+const Objeto = require('../api/model/Objeto')
 
 
 module.exports = {
-    async getAllAccesorios() {
-        const accesorio = await Accesorio.find();
+    async getAllObjetos() {
+        const Objeto = await Objeto.find();
 
-        return accesorio;
+        return Objeto;
     },
 
-    async getAccesorioById(id) {
-        const accesorio = await Accesorio.findById(id);
+    async getObjetoById(id) {
+        const Objeto = await Objeto.findById(id);
 
-        return accesorio;
+        return Objeto;
     },
 };

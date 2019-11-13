@@ -12,7 +12,7 @@ const objetosRouter = require('./routes/objetoRouters');
 const plazosRouter = require('./routes/plazoRouters');
 const registrosRouter = require('./routes/registroRouters');
 const usuariosRouter = require('./routes/usuarioRouters');
-//const vehiculosRouter = require('./routes/vehiculoRouters');
+const vehiculosRouter = require('./routes/vehiculoRouters');
 
 
 
@@ -38,7 +38,7 @@ router.use('/objetos', objetosRouter);
 router.use('/plazos', plazosRouter);
 router.use('/registros', registrosRouter);
 router.use('/usuarios', usuariosRouter);
-//router.use('/vehiculos', vehiculosRouter);
+router.use('/vehiculos', vehiculosRouter);
 
 
 /**

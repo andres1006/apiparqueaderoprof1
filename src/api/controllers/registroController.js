@@ -2,7 +2,7 @@ const RegistroService = require('../../services/registroService');
 
 module.exports = {
     async getRegistros(req, res, next) {
-        const registros = await RegistroService.getAllRegistroServices();
+        const registros = await RegistroService.getAllRegistros();
 
         return res.status(200).send({ registros });
     },
@@ -10,7 +10,7 @@ module.exports = {
     async getRegistro(req, res, next) {
         const { id } = req.params;
 
-        const registro = await RegistroService.getRegistroServiceById(id);
+        const registro = await RegistroService.getRegistroById(id);
 
         return res.status(200).send({ registro });
     },

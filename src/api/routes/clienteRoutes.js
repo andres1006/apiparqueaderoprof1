@@ -6,5 +6,6 @@ const router = Router();
 
 router.get('/', clienteController.getClientes);
 router.get('/:id', clienteController.getCliente);
+router.post('/', clienteController.saveCliente);
 
 module.exports = router;

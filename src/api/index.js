@@ -32,13 +32,13 @@ router.use(
  * API routes
  */
 router.get('/', (req, res) => res.sendStatus(200));
-router.use('/clientes', clientesRouter);
-router.use('/modalidades', modalidadesRouter);
-router.use('/objetos', objetosRouter);
-router.use('/plazos', plazosRouter);
-router.use('/registros', registrosRouter);
-router.use('/usuarios', usuariosRouter);
-router.use('/vehiculos', vehiculosRouter);
+router.use('/cliente', clientesRouter);
+router.use('/modalidad', modalidadesRouter);
+router.use('/objeto', objetosRouter);
+router.use('/plazo', plazosRouter);
+router.use('/registro', registrosRouter);
+router.use('/usuario', usuariosRouter);
+router.use('/vehiculo', vehiculosRouter);
 
 
 /**

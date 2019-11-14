@@ -16,4 +16,10 @@ module.exports = {
 
         return cliente;
     },
+
+    async saveCliente(clientereq) {
+        const clienteAlmacenado = await clientereq.save();
+
+        return clienteAlmacenado;
+    },
 };

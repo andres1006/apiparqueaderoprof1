@@ -15,4 +15,11 @@ module.exports = {
 
         return plazo;
     },
+
+    async savePlazo(plazoreq) {
+        const plazoAlmacenado = await plazoreq.save();
+
+        return plazoAlmacenado;
+    },
+
 };

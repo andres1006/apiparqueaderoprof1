@@ -6,5 +6,7 @@ const router = Router();
 
 router.get('/', plazoController.getPlazos);
 router.get('/:id', plazoController.getPlazo);
+router.post('/', plazoController.savePlazo);
+
 
 module.exports = router;

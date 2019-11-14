@@ -16,4 +16,12 @@ module.exports = {
 
         return modalidad;
     },
+
+    async saveModalidad(modalidadreq) {
+        const modalidadAlmacenado = await modalidadreq.save();
+
+        return modalidadAlmacenado;
+    },
+
+
 };

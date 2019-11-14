@@ -6,5 +6,7 @@ const router = Router();
 
 router.get('/', objetoController.getObjetos);
 router.get('/:id', objetoController.getObjeto);
+router.post('/', objetoController.saveObjeto);
+
 
 module.exports = router;

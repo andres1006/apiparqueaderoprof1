@@ -1,4 +1,5 @@
 const ClienteService = require('../../services/clienteService');
+const Cliente = require('../model/cliente');
 
 module.exports = {
     async getClientes(req, res, next) {

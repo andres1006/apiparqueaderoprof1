@@ -15,4 +15,11 @@ module.exports = {
 
         return usuario;
     },
+
+    async saveUsuario(usuarioreq) {
+        const usuarioAlmacenado = await usuarioreq.save();
+
+        return usuarioAlmacenado;
+    },
+
 };

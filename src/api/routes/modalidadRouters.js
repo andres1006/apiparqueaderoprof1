@@ -6,5 +6,7 @@ const router = Router();
 
 router.get('/', modalidadController.getModalidades);
 router.get('/:id', modalidadController.getModalidad);
+router.post('/', modalidadController.saveModalidad);
+
 
 module.exports = router;

@@ -15,4 +15,11 @@ module.exports = {
 
         return vehiculo;
     },
+
+    async saveVehiculo(vehiculoreq) {
+        const vehiculoAlmacenado = await vehiculoreq.save();
+
+        return vehiculoAlmacenado;
+    },
+
 };

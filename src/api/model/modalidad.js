@@ -11,7 +11,6 @@ const Plazo = require('./plazo')
 const ModalidadSchema = new Schema({
     //atributos
     descripcion: String,
-    valor: String,
     plazo: { type: Schema.Types.ObjectId, ref: Plazo, required: true },
     estado: Boolean
 });

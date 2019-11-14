@@ -10,14 +10,14 @@ const Objeto = require('./objeto');
 
 const RegistroSchema = new Schema({
     //atributo
-    id: String,
+    id: Number,
     fecha: Date,
     vehiculo: { type: Schema.Types.ObjectId, ref: Vehiculo, required: true },
     objeto: { type: Schema.Types.ObjectId, ref: Objeto },
     usuario: { type: Schema.Types.ObjectId, ref: Usuario, required: true },
     horaEntrada: { type: String, required: true },
     horaSalida: Date,
-    descripcion: Date,
+    descripcion: String,
     estado: Boolean,
     totalPago: Number
 

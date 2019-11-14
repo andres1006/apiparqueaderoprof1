@@ -16,4 +16,11 @@ module.exports = {
 
         return objeto;
     },
+
+    async saveObjeto(objetoreq) {
+        const objetoAlmacenado = await objetoreq.save();
+
+        return objetoAlmacenado;
+    },
+
 };

@@ -16,4 +16,11 @@ module.exports = {
 
         return registro;
     },
+
+    async saveRegistro(registroreq) {
+        const registroAlmacenado = await registroreq.save();
+
+        return registroAlmacenado;
+    },
+
 };

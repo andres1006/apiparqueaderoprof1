@@ -10,7 +10,7 @@ const Schema = mongoose.Schema;
 const ObjetoSchema = new Schema({
     //atributos
     nombre: String,
-    descripcion: Number,
+    descripcion: String
 });
 
 

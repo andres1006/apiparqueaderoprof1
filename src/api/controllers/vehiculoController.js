@@ -1,4 +1,5 @@
 const VehiculoService = require('../../services/vehiculoService');
+const Vehiculo = require('../model/vehiculo');
 
 module.exports = {
     async getVehiculos(req, res, next) {
@@ -14,4 +15,17 @@ module.exports = {
 
         return res.status(200).send({ vehiculo });
     },
+
+    async saveVehiculo(req, res, next) {
+        let vehiculoRecibido = new Vehiculo()
+        vehiculoRecibido.placa = req.body.placa,
+            vehiculoRecibido.cliente = req.body.cliente,
+            vehiculoRecibido.tipoVehiculo = req.body.tipoVehiculo,
+            vehiculoRecibido.estado = req.body.estado
+
+        const vehiculoAlmacenado = await VehiculoService.saveVehiculo(vehiculoRecibido);
+
+        return res.status(200).send({ vehiculoAlmacenado });
+    },
+
 };

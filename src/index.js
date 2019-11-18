@@ -1,23 +1,23 @@
+// eslint-disable-file no-use-before-define 
 const bodyParser = require('body-parser');
 const express = require('express');
 const expressErrorHandler = require('@kazaar/express-error-handler');
 const helmet = require('helmet');
 
-const api = require('./api');
+const app = express();
+const cors = require('cors');
+const mongoose = require('mongoose');
+
 const { host, port, env, db } = require('./config');
 const logger = require('./config/logger');
 
 const { httpErrorHandler, handleServerError, celebrateErrorParser } = expressErrorHandler(logger);
-
-
-
-
+const api = require('./api');
 /**
  * Express server initialization
  */
-const app = express();
-const mongoose = require('mongoose');
 
+app.use(cors());
 app.set('host', host);
 app.set('port', port);
 
@@ -50,17 +50,15 @@ app.use(httpErrorHandler);
  */
 mongoose.connect(db, (err, res) => {
     if (err) {
-        return console.log('Error al conectar a la base de datos: ' + err)
+        return console.log(`Error al conectar a la base de datos: ${err}`);
     }
-    console.log('Conexión a la base de datos establecida...')
-
+    console.log('Conexión a la base de datos establecida...');
 
     app
         .listen(port, host, () => {
             logger.info(`App is running at ${host}:${port} in ${env} mode`);
         })
         .on('error', handleServerError);
-
-})
+});
 
 module.exports = app;

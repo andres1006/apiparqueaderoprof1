@@ -1,10 +1,6 @@
-'use strict'
-const mongoose = require('mongoose');
-const Usuario = require('../api/model/usuario')
-
-const jwt = require('../utils/jwt')
-const moment = require('moment')
-const { JWT } = require('../config');
+const moment = require('moment');
+const Usuario = require('../api/model/usuario');
+const jwt = require('../utils/jwt');
 
 
 module.exports = {
@@ -29,33 +25,33 @@ module.exports = {
     async createToken(usuario) {
         const payload = {
             sub: usuario._id,
-            iat: moment().unix()
-                // exp:  moment().add(accessTokenExpiryTime/60/60/24,'days').unix()            
-        }
-        return await jwt.generateToken(payload, payload)
+            iat: moment().unix(),
+            // exp:  moment().add(accessTokenExpiryTime/60/60/24,'days').unix()
+        };
+
+        return await jwt.generateToken(payload, payload);
     },
 
     async decodeToken(token) {
         const decoded = new Promise((resolve, reject) => {
             try {
-                const payload = jwt.getDecodedToken(token)
+                const payload = jwt.getDecodedToken(token);
 
                 if (payload.exp <= moment().unix()) {
                     reject({
                         status: 401,
-                        message: 'El token ha expirado'
-                    })
+                        message: 'El token ha expirado',
+                    });
                 }
-                resolve(payload.sub)
+                resolve(payload.sub);
             } catch (err) {
                 reject({
                     status: 500,
-                    message: 'Token no válido'
-                })
+                    message: 'Token no válido',
+                });
             }
-        })
+        });
 
-        return decoded
-    }
-
+        return decoded;
+    },
 };

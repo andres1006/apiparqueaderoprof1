@@ -1,7 +1,7 @@
 const Router = require('express-promise-router').default;
 
 const clienteController = require('../controllers/clienteController');
-const auth = require('../middlewares/auth')
+const auth = require('../middlewares/auth');
 
 const router = Router();
 

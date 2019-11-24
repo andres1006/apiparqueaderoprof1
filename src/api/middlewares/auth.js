@@ -1,6 +1,7 @@
 const jwt = require('express-jwt');
 
 const { JWT } = require('../../config');
+const usuarioService = require('../../services/usuarioservice')
 
 const { secret } = JWT;
 
@@ -16,18 +17,38 @@ const { secret } = JWT;
  * // /src/api/routes/users.js
  *
  * const usersController = require('../controllers/users');
- * const auth = require('../middlewares/auth');
+ * const { auth } = require('../middlewares');
  *
  * router.get('/users', auth.required, usersController.getUsers);
  */
+
+function isAuth(req, res, next) {
+    if (!req.headers.authorization) {
+        return res.status(403).send({ message: 'No tienes autorización' })
+    }
+
+    const token = req.headers.authorization.split(' ')[1]
+
+    usuarioService.decodeToken(token)
+        .then(response => {
+            req.user = response
+
+            next()
+        })
+        .catch(response => {
+            res.status(response.status).send({ message: response.message })
+        })
+}
+
 module.exports = {
-  required: jwt({
-    secret,
-    requestProperty: 'auth',
-  }),
-  optional: jwt({
-    secret,
-    requestProperty: 'auth',
-    credentialsRequired: false,
-  }),
+    required: jwt({
+        secret,
+        requestProperty: 'auth',
+    }),
+    optional: jwt({
+        secret,
+        requestProperty: 'auth',
+        credentialsRequired: false,
+    }),
+    isAuth
 };

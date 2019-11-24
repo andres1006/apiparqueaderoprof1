@@ -8,11 +8,14 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+
 const { host, port, env, db } = require('./config');
 const logger = require('./config/logger');
 
 const { httpErrorHandler, handleServerError, celebrateErrorParser } = expressErrorHandler(logger);
 const api = require('./api');
+
+//const nodemailer = require('nodemailer');
 /**
  * Express server initialization
  */
@@ -20,7 +23,7 @@ const api = require('./api');
 app.use(cors());
 app.set('host', host);
 app.set('port', port);
-
+//app.use('/nodemailer', nodemailer);
 /**
  * Application configuration
  */

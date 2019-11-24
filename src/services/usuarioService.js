@@ -2,7 +2,6 @@ const moment = require('moment');
 const Usuario = require('../api/model/usuario');
 const jwt = require('../utils/jwt');
 
-
 module.exports = {
     async getAllUsuarios() {
         const usuario = await Usuario.find();

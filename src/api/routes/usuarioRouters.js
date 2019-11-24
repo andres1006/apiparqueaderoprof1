@@ -1,11 +1,11 @@
 const Router = require('express-promise-router').default;
-
 const usuarioController = require('../controllers/usuarioController');
+const auth = require('../middlewares/auth');
 
 const router = Router();
 
-router.get('/', usuarioController.getUsuarios);
-router.get('/:id', usuarioController.getUsuario);
+router.get('/', auth.isAuth, usuarioController.getUsuarios);
+router.get('/:id', auth.isAuth, usuarioController.getUsuario);
 router.post('/registrar', usuarioController.signUp);
 router.post('/autenticar', usuarioController.signIn);
 

@@ -1,7 +1,7 @@
 const jwt = require('express-jwt');
 
 const { JWT } = require('../../config');
-const usuarioService = require('../../services/usuarioservice');
+const usuarioService = require('../../services/usuarioService');
 
 const { secret } = JWT;
 
@@ -23,33 +23,33 @@ const { secret } = JWT;
  */
 
 function isAuth(req, res, next) {
-  if (!req.headers.authorization) {
-    return res.status(403).send({ message: 'No tienes autorización' });
-  }
+    if (!req.headers.authorization) {
+        return res.status(403).send({ message: 'No tienes autorización' });
+    }
 
-  const token = req.headers.authorization.split(' ')[1];
+    const token = req.headers.authorization.split(' ')[1];
 
-  usuarioService
-    .decodeToken(token)
-    .then(response => {
-      req.user = response;
+    usuarioService
+        .decodeToken(token)
+        .then(response => {
+            req.user = response;
 
-      next();
-    })
-    .catch(response => {
-      res.status(response.status).send({ message: response.message });
-    });
+            next();
+        })
+        .catch(response => {
+            res.status(response.status).send({ message: response.message });
+        });
 }
 
 module.exports = {
-  required: jwt({
-    secret,
-    requestProperty: 'auth',
-  }),
-  optional: jwt({
-    secret,
-    requestProperty: 'auth',
-    credentialsRequired: false,
-  }),
-  isAuth,
+    required: jwt({
+        secret,
+        requestProperty: 'auth',
+    }),
+    optional: jwt({
+        secret,
+        requestProperty: 'auth',
+        credentialsRequired: false,
+    }),
+    isAuth,
 };

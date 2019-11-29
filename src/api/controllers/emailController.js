@@ -9,7 +9,7 @@ module.exports = {
             service: 'Gmail',
             auth: {
                 user: "andresagudelo1006@gmail.com",
-                pass: "andres1006"
+                pass: "Andres1006"
             }
         });
         // Definimos el email

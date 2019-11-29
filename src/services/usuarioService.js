@@ -62,5 +62,10 @@ module.exports = {
     async editUsuario(id, usuarioact) {
         const usuarioActualizado = await Usuario.findByIdAndUpdate(id, usuarioact);
         return usuarioActualizado;
+    },
+
+    async passUsuario(id, usuarioact) {
+        const usuarioActualizado = await Usuario.findByIdAndUpdate(id, usuarioact);
+        return usuarioActualizado;
     }
 };

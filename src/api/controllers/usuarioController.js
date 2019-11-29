@@ -1,6 +1,9 @@
 const usuarioService = require('../../services/usuarioService');
 const Usuario = require('../model/usuario');
 const EmailCtrl = require('../controllers/emailController');
+const crypto = require('crypto');
+
+const bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
     async getUsuarios(req, res, next) {
@@ -90,18 +93,53 @@ module.exports = {
     },
 
     async editUsuario(req, res, next) {
-        Usuario.save(async err => {
-            if (err)
-                return res.status(500).send({
-                    message: `Error al crear el usuario: ${err}`,
+
+        if (req.body.password) {
+            const { id } = req.params;
+            console.log("id =  " + id);
+            let update = req.body
+            console.log("pass 1 =  " + update.password);
+
+            bcrypt.genSalt(10, async(err, salt) => {
+                if (err) return next(err);
+                bcrypt.hash(update.password, salt, null, (err, hash) => {
+                    if (err) return next(err);
+                    update.password = hash;
+                    console.log("pass 2 =  " + update.password);
+                    console.log("pass 3" + update.password);
+
+                    const usuarioAnterior = usuarioService.passUsuario(id, update);
+                    return res.status(200).send({ usuarioAnterior });
+                    next();
                 });
+            });
+        } else {
             const { id } = req.params;
             let update = req.body
+
             const usuarioAnterior = await usuarioService.editUsuario(id, update);
             return res.status(200).send({ usuarioAnterior });
+        }
+
+    },
+
+    async editPassword(req, res, next) {
+
+        const { id } = req.params;
+        let update = req.body
+
+
+        bcrypt.genSalt(10, async(err, salt) => {
+            if (err) return next(err);
+            bcrypt.hash(update.password, salt, null, (err, hash) => {
+                if (err) return next(err);
+                update.password = hash;
+
+                const usuarioAnterior = usuarioService.passUsuario(id, update);
+                return res.status(200).send({ usuarioAnterior });
+                next();
+            });
         });
-
-
     },
 
     async restorePass(req, res, next) {

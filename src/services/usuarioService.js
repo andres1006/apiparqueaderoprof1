@@ -53,4 +53,14 @@ module.exports = {
 
         return decoded;
     },
+
+    async deleteUsuario(id) {
+        const usuarioDeleted = await Usuario.findByIdAndDelete(id);
+        return usuarioDeleted;
+    },
+
+    async editUsuario(id, usuarioact) {
+        const usuarioActualizado = await Usuario.findByIdAndUpdate(id, usuarioact);
+        return usuarioActualizado;
+    }
 };

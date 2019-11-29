@@ -30,4 +30,23 @@ module.exports = {
         return res.status(200).send({ clienteAlmacenado });
     },
 
+    async deleteCliente(req, res, next) {
+        const { id } = req.params;
+        const clienteBorrado = await ClienteService.deleteCliente(id);
+        if (clienteBorrado) {
+            return res.status(200).send({ clienteBorrado });
+        } else {
+            return res.status(404).send({ message: "El id ingresado no existe" });
+        }
+    },
+
+    async editCliente(req, res, next) {
+        const { id } = req.params;
+        let update = req.body
+        const clienteAnterior = await ClienteService.editCliente(id, update);
+        return res.status(200).send({ clienteAnterior });
+    },
+
+
+
 };

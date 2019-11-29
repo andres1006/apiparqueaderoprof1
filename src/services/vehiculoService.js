@@ -22,4 +22,15 @@ module.exports = {
         return vehiculoAlmacenado;
     },
 
+    async deleteVehiculo(id) {
+        const vehiculoDeleted = await Vehiculo.findByIdAndDelete(id);
+        return vehiculoDeleted;
+    },
+
+    async editVehiculo(id, vehiculoact) {
+        const vehiculoActualizado = await Vehiculo.findByIdAndUpdate(id, vehiculoact);
+
+        return vehiculoActualizado;
+    }
+
 };

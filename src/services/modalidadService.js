@@ -23,5 +23,17 @@ module.exports = {
         return modalidadAlmacenado;
     },
 
+    async deleteModalidad(id) {
+        const modalidadDeleted = await Modalidad.findByIdAndDelete(id);
+        return modalidadDeleted;
+    },
+
+    async editModalidad(id, modalidadact) {
+        const modalidadActualizado = await Modalidad.findByIdAndUpdate(id, modalidadact);
+
+        return modalidadActualizado;
+    }
+
+
 
 };

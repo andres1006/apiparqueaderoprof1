@@ -29,4 +29,22 @@ module.exports = {
         return res.status(200).send({ plazoAlmacenado });
     },
 
+    async deletePlazo(req, res, next) {
+        const { id } = req.params;
+        const plazoBorrado = await PlazoService.deletePlazo(id);
+        if (plazoBorrado) {
+            return res.status(200).send({ plazoBorrado });
+        } else {
+            return res.status(404).send({ message: "El id ingresado no existe" });
+        }
+    },
+
+    async editPlazo(req, res, next) {
+        const { id } = req.params;
+        let update = req.body
+        const plazoAnterior = await PlazoService.editPlazo(id, update);
+        return res.status(200).send({ plazoAnterior });
+    },
+
+
 };

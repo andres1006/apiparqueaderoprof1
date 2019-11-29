@@ -28,4 +28,22 @@ module.exports = {
         return res.status(200).send({ vehiculoAlmacenado });
     },
 
+    async deleteVehiculo(req, res, next) {
+        const { id } = req.params;
+        const vehiculoBorrado = await VehiculoService.deleteVehiculo(id);
+        if (vehiculoBorrado) {
+            return res.status(200).send({ vehiculoBorrado });
+        } else {
+            return res.status(404).send({ message: "El id ingresado no existe" });
+        }
+    },
+
+    async editVehiculo(req, res, next) {
+        const { id } = req.params;
+        let update = req.body
+        const vehiculoAnterior = await VehiculoService.editVehiculo(id, update);
+        return res.status(200).send({ vehiculoAnterior });
+    },
+
+
 };

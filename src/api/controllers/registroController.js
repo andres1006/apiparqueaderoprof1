@@ -34,4 +34,22 @@ module.exports = {
         return res.status(200).send({ registroAlmacenado });
     },
 
+    async deleteRegistro(req, res, next) {
+        const { id } = req.params;
+        const registroBorrado = await RegistroService.deleteRegistro(id);
+        if (registroBorrado) {
+            return res.status(200).send({ registroBorrado });
+        } else {
+            return res.status(404).send({ message: "El id ingresado no existe" });
+        }
+    },
+
+    async editRegistro(req, res, next) {
+        const { id } = req.params;
+        let update = req.body
+        const registroAnterior = await RegistroService.editRegistro(id, update);
+        return res.status(200).send({ registroAnterior });
+    },
+
+
 };

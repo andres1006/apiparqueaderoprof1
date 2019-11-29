@@ -22,4 +22,17 @@ module.exports = {
 
         return clienteAlmacenado;
     },
+
+    async deleteCliente(id) {
+        const clienteDeleted = await Cliente.findByIdAndDelete(id);
+        return clienteDeleted;
+    },
+
+    async editCliente(id, clienteact) {
+        const clienteActualizado = await Cliente.findByIdAndUpdate(id, clienteact);
+
+        return clienteActualizado;
+    }
+
+
 };

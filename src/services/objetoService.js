@@ -23,4 +23,15 @@ module.exports = {
         return objetoAlmacenado;
     },
 
+    async deleteObjeto(id) {
+        const objetoDeleted = await Objeto.findByIdAndDelete(id);
+        return objetoDeleted;
+    },
+
+    async editObjeto(id, objetoact) {
+        const objetoActualizado = await Objeto.findByIdAndUpdate(id, objetoact);
+
+        return objetoActualizado;
+    }
+
 };

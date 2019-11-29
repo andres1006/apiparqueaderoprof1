@@ -23,4 +23,15 @@ module.exports = {
         return registroAlmacenado;
     },
 
+    async deleteRegistro(id) {
+        const resgistroDeleted = await Registro.findByIdAndDelete(id);
+        return resgistroDeleted;
+    },
+
+    async editRegistro(id, resgistroact) {
+        const resgistroActualizado = await Registro.findByIdAndUpdate(id, resgistroact);
+
+        return resgistroActualizado;
+    }
+
 };

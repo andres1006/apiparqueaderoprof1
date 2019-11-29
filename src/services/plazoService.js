@@ -22,5 +22,15 @@ module.exports = {
         return plazoAlmacenado;
     },
 
+    async deletePlazo(id) {
+        const plazoDeleted = await Plazo.findByIdAndDelete(id);
+        return plazoDeleted;
+    },
+
+    async editPlazo(id, plazoact) {
+        const plazoActualizado = await Plazo.findByIdAndUpdate(id, plazoact);
+
+        return plazoActualizado;
+    }
 
 };

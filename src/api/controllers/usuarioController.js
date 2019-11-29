@@ -70,7 +70,7 @@ module.exports = {
                 req.user = user;
                 const tokenGenerado = await usuarioService.createToken(user);
 
-                EmailCtrl.sendEmail(req.body.email, "Haz Ingresado correctamente al portal parqeuadero");
+                EmailCtrl.sendEmail(req.body.email, "Haz Ingresado correctamente al portal parquadero");
                 return res.status(200).send({
                     message: 'Te has logueado correctamente',
                     token: tokenGenerado,
@@ -78,4 +78,54 @@ module.exports = {
             });
         }).select('_id email password');
     },
+
+    async deleteUsuario(req, res, next) {
+        const { id } = req.params;
+        const usuarioBorrado = await usuarioService.deleteUsuario(id);
+        if (usuarioBorrado) {
+            return res.status(200).send({ usuarioBorrado });
+        } else {
+            return res.status(404).send({ message: "El id ingresado no existe" });
+        }
+    },
+
+    async editUsuario(req, res, next) {
+        Usuario.save(async err => {
+            if (err)
+                return res.status(500).send({
+                    message: `Error al crear el usuario: ${err}`,
+                });
+            const { id } = req.params;
+            let update = req.body
+            const usuarioAnterior = await usuarioService.editUsuario(id, update);
+            return res.status(200).send({ usuarioAnterior });
+        });
+
+
+    },
+
+    async restorePass(req, res, next) {
+        Usuario.findOne({ email: req.body.email }, async(err, user) => {
+            if (err)
+                return res.status(500).send({
+                    message: `Error al ingresar: ${err}`,
+                });
+            if (!user)
+                return res.status(404).send({
+                    message: `No existe el usuario: ${req.body.email}`,
+                });
+
+
+            req.user = user;
+            const tokenGenerado = await usuarioService.createToken(user);
+
+            EmailCtrl.sendEmail(req.body.email, "Cambiar contraseña  " + tokenGenerado.access_token);
+            return res.status(200).send({
+                message: 'Te has logueado correctamente',
+                token: tokenGenerado,
+            });
+
+        }).select('_id email');
+    },
+
 };

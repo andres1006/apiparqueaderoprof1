@@ -26,4 +26,22 @@ module.exports = {
         return res.status(200).send({ objetoAlmacenado });
     },
 
+    async deleteObjeto(req, res, next) {
+        const { id } = req.params;
+        const objetoBorrado = await ObjetoService.deleteObjeto(id);
+        if (objetoBorrado) {
+            return res.status(200).send({ objetoBorrado });
+        } else {
+            return res.status(404).send({ message: "El id ingresado no existe" });
+        }
+    },
+
+    async editObjeto(req, res, next) {
+        const { id } = req.params;
+        let update = req.body
+        const objetoAnterior = await ObjetoService.editObjeto(id, update);
+        return res.status(200).send({ objetoAnterior });
+    },
+
+
 };

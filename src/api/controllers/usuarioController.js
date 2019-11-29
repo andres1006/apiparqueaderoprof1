@@ -49,7 +49,7 @@ module.exports = {
                     message: `Error al crear el usuario: ${err}`,
                 });
             const tokenGenerado = await usuarioService.createToken(user);
-            EmailCtrl.sendEmail(req.body.email, "Gracias, Se registro correctamente, ahora puedes iniciar sesion");
+            //EmailCtrl.sendEmail(req.body.email, "Gracias, Se registro correctamente, ahora puedes iniciar sesion");
             return res.status(200).send({ token: tokenGenerado });
         });
     },
@@ -73,7 +73,7 @@ module.exports = {
                 req.user = user;
                 const tokenGenerado = await usuarioService.createToken(user);
 
-                EmailCtrl.sendEmail(req.body.email, "Haz Ingresado correctamente al portal parquadero");
+                //EmailCtrl.sendEmail(req.body.email, "Haz Ingresado correctamente al portal parquadero");
                 return res.status(200).send({
                     message: 'Te has logueado correctamente',
                     token: tokenGenerado,

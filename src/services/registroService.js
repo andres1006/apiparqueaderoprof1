@@ -32,6 +32,16 @@ module.exports = {
         const resgistroActualizado = await Registro.findByIdAndUpdate(id, resgistroact);
 
         return resgistroActualizado;
+    },
+    async getPopulate() {
+        const registro = await Registro.find().populate('objeto').populate('vehiculo');
+
+        return registro;
+    },
+    async getPopulateId(id) {
+        const registro = await Registro.findById(id).populate('vehiculo');
+
+        return registro;
     }
 
 };

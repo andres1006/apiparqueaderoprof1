@@ -1,6 +1,8 @@
 const RegistroService = require('../../services/registroService');
 const Registro = require('../model/registro');
 
+
+
 module.exports = {
     async getRegistros(req, res, next) {
         const registros = await RegistroService.getAllRegistros();
@@ -50,6 +52,22 @@ module.exports = {
         const registroAnterior = await RegistroService.editRegistro(id, update);
         return res.status(200).send({ registroAnterior });
     },
+
+    async getPopulates(req, res, next) {
+        const registros = await RegistroService.getPopulate();
+        return res.status(200).send({ registros });
+    },
+    async getPopulatesId(req, res, next) {
+        const { id } = req.params;
+        const registros = await RegistroService.getPopulateId(id);
+        return res.status(200).send({ registros });
+    },
+
+
+
+
+
+
 
 
 };
